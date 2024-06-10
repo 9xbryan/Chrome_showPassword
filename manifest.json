@@ -1,0 +1,22 @@
+{  "version": "1.2.1",
+   "version_name": "1.2.1 alpha 🌉",
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "showPassword.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_end"
+   } ],
+   "default_locale": "en",
+   "description": "__MSG_extension_description__",
+   "icons": {
+      "128": "icon.png",
+      "16": "icon32.png",
+      "32": "icon32.png",
+      "64": "icon.png"
+   },
+   "manifest_version": 3,
+   "name": "Show Password",
+   "options_page": "options.html",
+   "permissions": [ "storage" ],
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqlxPJA9bcVRNyUDhUXkb7gCiKcJHLTcYKlJzGgfneUP3CcVNveRpQFs9QswSzUF8nV3qp0EGsovh2HmFMapHjcMAID7kDtAmC/VuTjIPosD7U/gV39ZTMpd4RX+6E0QRgUX0NO0dCmZBAYrAPyjX/JK4pRmOqoyZeewJYJkiEz1HbfBRGym/rnzzGMyEVYxRWtLW3rAngqMguKW+/xqWzMEkN0ztn19qP8w71s7IpJIkaiD3MFycDNTXnUQ20C1ht5pH23xuLDaVp0ToGzteQdIBqM9PfQafR7sTaka8hXpL4QU6WBjfB4puXv6j+JJzMtVahYD8Yc0TlcT2sEwhuwIDAQAB"
+}
