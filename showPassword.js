@@ -125,7 +125,7 @@
     passwordInputs.forEach(input => {
       if (!modified.has(input)) {
         Object.entries(selectedBehaviors).forEach(([key,value]) => {
-        if (value.is('Boolean') && value) actionsArr[key](input)
+        if (value && value.is('Boolean')) actionsArr[key](input)
       })
         modified.add(input)
       }

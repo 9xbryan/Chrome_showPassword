@@ -3,7 +3,7 @@
    "content_scripts": [ {
       "all_frames": true,
       "js": [ "showPassword.js" ],
-      "matches": [ "http://*/*", "https://*/*" ],
+      "matches": [ "https://*/*" ],
       "run_at": "document_end"
    } ],
    "default_locale": "en",
