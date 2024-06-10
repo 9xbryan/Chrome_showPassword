@@ -20,13 +20,15 @@
 'use strict';
 
 import * as monkeypatch from "./lib/monkeypatch_prototypes/monkeypatch.mjs";
+import * as monkeypatch_DOM from "./lib/monkeypatch_prototypes/monkeypatch_DOM.mjs";
 ['consoleColors', 'stringify', 'is', 'defer'].forEach( patch => monkeypatch[patch]());
+['consoleHtmlTag'].forEach(patch => monkeypatch_DOM[patch]());
 if (`undefined` == typeof globalThis.browser) globalThis.browser = chrome;
 
 let selectBehave, mouseOverWait, selectedBehaviors = {mouseOverWait: 500}
 
 function setLocalText (name) {
-  document.getElementById(name).innerHTML = chrome.i18n.getMessage(name)
+  document.getElementById(name).innerHTML = browser.i18n.getMessage(name)
 }
 
 function localization () {
@@ -35,10 +37,14 @@ function localization () {
 }
 
 function loadSetting () {
-  chrome.storage.sync.get(data => {
-    if ('behaviors' in data) {
-      selectedBehaviors = data.behaviors
-      // mouseOverWait.value = data.wait
+  browser.storage.sync.get(data => {
+    if ('selectedBehaviors' in data) {
+      selectedBehaviors = data.selectedBehaviors
+      Object.entries(selectedBehaviors).forEach(([key,value]) => {
+        let attribute = value.is('Boolean') ? 'checked' : 'value';
+        let option = document.getElementById(key);
+        option[attribute] = value;
+      })
       if (!selectedBehaviors.optMouseOver) {
         document.getElementById('divWait').style.display = 'none'
       }
@@ -48,25 +54,24 @@ function loadSetting () {
 
 function saveSetting () {
   selectedBehaviors.mouseOverWait = mouseOverWait.value
-  chrome.storage.sync.set({
-    behaviors: selectedBehaviors,
-    // behave: selectBehave.selectedIndex,
-    // wait: mouseOverWait.value
+  browser.storage.sync.set({
+    selectedBehaviors: selectedBehaviors,
   })
   window.location.reload()
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  selectBehave = document.getElementById('selectBehave')
-  mouseOverWait = document.getElementById('inputWait')
+  // selectBehave = document.getElementById('selectBehave')
+  mouseOverWait = document.getElementById('mouseOverWait')
 
-  selectBehave.addEventListener('change', saveSetting, false)
+  // selectBehave.addEventListener('change', saveSetting, false)
   mouseOverWait.addEventListener('blur', saveSetting, false)
 
   let checkboxes = document.querySelectorAll(`input[type="checkbox"]`);
   checkboxes.forEach(box => {
-
-    selectedBehaviors[box.id] = box.checked;
+    box.addEventListener('click', e => {
+      selectedBehaviors[box.id] = box.checked;
+    });
     box.addEventListener('change', saveSetting, false);
   })
 

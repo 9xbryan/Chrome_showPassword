@@ -27,12 +27,12 @@ MA 02110-1301  USA
                 text-align: center;
             }
             table {
-                margin-left:auto; 
+                margin-left:auto;
                 margin-right:auto;
                 text-align: left;
             }
             table th{
-                margin-left:auto; 
+                margin-left:auto;
                 margin-right:auto;
             }
             a.donate{
@@ -42,49 +42,49 @@ MA 02110-1301  USA
             }
 
             a.donate:hover{
-                font-size:0.8em; 
+                font-size:0.8em;
                 color:#000;
                 text-decoration:underline;
             }
         </style>
-        <script src="options.js"></script>
+        <script type="module" src="options.js"></script>
     </head>
     <body>
         <h1 id="optionTitle">ShowPassword Option</h1>
         <table>
             <tr>
-                <table> 
-                    <tr> 
-                        <th><input type="checkbox" style="display:none"></th> 
-                        <th><label id="labelWhen">When to show password:</label></th> 
-                    </tr> 
-                    <tr> 
-                        <td><input type="checkbox" name="Mouse over" id="optMouseOver"></td> 
+                <table>
+                    <tr>
+                        <th><input type="checkbox" style="display:none"></th>
+                        <th><label id="labelWhen">When to show password:</label></th>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="Mouse over" id="optMouseOver"></td>
                         <td><label id="optMouseOver">Mouse over</label>
                             <div id="divWait" style="display: inline">
                                 <label id="labelWait">Wait:</label>
-                                <input id="inputWait" type="number" min="0" value="500" style="width: 50px;">ms
+                                <input id="mouseOverWait" type="number" min="0" value="500" style="width: 50px;">ms
                             </div>
                         </td>
                     </tr>
-                    <tr> 
-                        <td><input type="checkbox" name="Double Click" id="optDblClick"></td> 
+                    <tr>
+                        <td><input type="checkbox" name="Double Click" id="optDblClick"></td>
                         <td><label id="optDblClick">Double Click</label>
                         </td>
                     </tr>
-                    <tr> 
-                        <td><input type="checkbox" name="On Focus" id="optFocus"></td> 
+                    <tr>
+                        <td><input type="checkbox" name="On Focus" id="optFocus"></td>
                         <td><label id="optFocus">On Focus</label>
                         </td>
-                    </tr> 
-                    <tr> 
-                        <td><input type="checkbox" name="Press Ctrl Key" id="optCtrl"></td> 
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="Press Ctrl Key" id="optCtrl"></td>
                         <td><label id="optCtrl">Press Ctrl Key</label>
                         </td>
                     </tr>
                 </table>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td>
                     <label id="labelWhen">When to show password:</label>
                 </td>
@@ -95,22 +95,22 @@ MA 02110-1301  USA
                         <option id="optFocus">On Focus</option>
 						<option id="optCtrl">Press Ctrl Key</option>
                     </select>
-                    
+
                 </td>
-            </tr>
+            </tr> -->
             <tr>
                 <td>
                     <label id="labelPreview">Preview Password field:</label>
                 </td>
                 <td>
-                    <input id="passwordTest" type="password" size="25" value="Password" style="width: 100px;">                    
+                    <input id="passwordTest" type="password" size="25" value="Password" style="width: 100px;">
                 </td>
             </tr>
         </table>
-        <br>
+        <!-- <br>
         Donate BTC:
-        <a href="bitcoin:1H8qRgzgEXcxHRqbQzb37NFf3JVySDoktE" class="donate">1H8qRgzgEXcxHRqbQzb37NFf3JVySDoktE</a>
+        <a href="bitcoin:1H8qRgzgEXcxHRqbQzb37NFf3JVySDoktE" class="donate">1H8qRgzgEXcxHRqbQzb37NFf3JVySDoktE</a> -->
 
-        <script src="showPassword.js"></script>
+        <script type="module" src="showPassword.js"></script>
     </body>
 </html>

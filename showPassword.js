@@ -1,12 +1,10 @@
 (function (win) {
   'use strict'
-  const KEY_ENTER = 13
-  const KEY_CTRL = 17
-  let behave = 0
-  let wait = 500
+
+  let selectedBehaviors = {mouseOverWait: 500}
   let hasLoadSetting = false
 
-  function mouseOver (tar) {
+  function optMouseOver (tar) {
     let isMouseOver = false
 
     tar.addEventListener('mouseover', () => {
@@ -15,7 +13,7 @@
         if (isMouseOver) {
           tar.type = 'text'
         }
-      }, wait)
+      }, selectedBehaviors.mouseOverWait)
     }, false)
 
     tar.addEventListener('mouseout', () => {
@@ -28,13 +26,13 @@
     }, false)
 
     tar.addEventListener('keydown', e => {
-      if (e.keyCode === KEY_ENTER) {
+      if (e.key === "Enter") {
         tar.type = 'password'
       }
     }, false)
   }
 
-  function mouseDblClick (tar) {
+  function optDblClick (tar) {
     tar.addEventListener('dblclick', () => {
       if (tar.type === 'password') {
         tar.type = 'text'
@@ -48,13 +46,13 @@
     }, false)
 
     tar.addEventListener('keydown', e => {
-      if (e.keyCode === KEY_ENTER) {
+      if (e.key === 'Enter') {
         tar.type = 'password'
       }
     }, false)
   }
 
-  function mouseFocus (tar) {
+  function optFocus (tar) {
     tar.addEventListener('focus', () => {
       tar.type = 'text'
     }, false)
@@ -64,13 +62,13 @@
     }, false)
 
     tar.addEventListener('keydown', e => {
-      if (e.keyCode === KEY_ENTER) {
+      if (e.key === 'Enter') {
         tar.type = 'password'
       }
     }, false)
   }
 
-  function ctrlKeyShift (tar) {
+  function optCtrl (tar) {
     let isHide = true
     let notPressCtrl = true
     let onlyCtrl = true
@@ -83,7 +81,7 @@
     }, false)
 
     tar.addEventListener('keyup', e => {
-      if (e.keyCode === KEY_CTRL) {
+      if (e.key === 'Control') {
         if (onlyCtrl) {
           isHide = !isHide
         } else {
@@ -101,12 +99,12 @@
     }, false)
 
     tar.addEventListener('keydown', e => {
-      if (e.keyCode === KEY_ENTER) {
+      if (e.key === "Enter") {
         tar.type = 'password'
         isHide = true
         notPressCtrl = true
         onlyCtrl = true
-      } else if (e.keyCode === KEY_CTRL) {
+      } else if (e.key === 'Control') {
         if (notPressCtrl) {
           tar.type = 'text'
           notPressCtrl = false
@@ -118,7 +116,7 @@
     }, false)
   }
 
-  const actionsArr = [mouseOver, mouseDblClick, mouseFocus, ctrlKeyShift]
+  const actionsArr = {optMouseOver, optDblClick, optFocus, optCtrl}
   const doc = win.document
   const modified = new WeakSet()
 
@@ -126,7 +124,9 @@
     const passwordInputs = doc.querySelectorAll('input[type=password]')
     passwordInputs.forEach(input => {
       if (!modified.has(input)) {
-        actionsArr[behave](input)
+        Object.entries(selectedBehaviors).forEach(([key,value]) => {
+        if (value.is('Boolean') && value) actionsArr[key](input)
+      })
         modified.add(input)
       }
     })
@@ -138,9 +138,8 @@
     } else {
     // loadSetting
       chrome.storage.sync.get(data => {
-        if ('behave' in data) {
-          behave = data.behave
-          wait = data.wait
+        if ('selectedBehaviors' in data) {
+          selectedBehaviors = data.selectedBehaviors
         }
         modifyAllInputs()
         hasLoadSetting = true
@@ -163,4 +162,4 @@
     attributes: true,
     attributeFilter: ['type']
   })
-})(this)
+})(globalThis)
