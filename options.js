@@ -76,13 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   document.getElementById('passwordTest').addEventListener('keydown', e => {
-    if (e.key === "Enter") {
-      if (document.getElementById('passwordTest').value.toLowerCase() === 'taiwan') {
-        window.location = 'http://en.wikipedia.org/wiki/Taiwan'
-      } else {
-        window.location.reload()
-      }
-    }
+    if (e.key === "Enter")  window.location.reload()
   }, false)
 
   localization()
