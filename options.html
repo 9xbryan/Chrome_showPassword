@@ -18,99 +18,94 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 MA 02110-1301  USA
 -->
 <html>
-    <head>
-        <title>ShowPassword Option</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-        <style>
-            body{
-                text-align: center;
-            }
-            table {
-                margin-left:auto;
-                margin-right:auto;
-                text-align: left;
-            }
-            table th{
-                margin-left:auto;
-                margin-right:auto;
-            }
-            a.donate{
-                font-size:0.8em;
-                color:#555;
-                text-decoration: none;
-            }
-
-            a.donate:hover{
-                font-size:0.8em;
-                color:#000;
-                text-decoration:underline;
-            }
-        </style>
-        <script type="module" src="options.js"></script>
-    </head>
-    <body>
-        <h1 id="optionTitle">ShowPassword Option</h1>
-        <table>
-            <tr>
-                <table>
-                    <tr>
-                        <th><input type="checkbox" style="display:none"></th>
-                        <th><label id="labelWhen">When to show password:</label></th>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" name="Mouse over" id="optMouseOver"></td>
-                        <td><label id="optMouseOver">Mouse over</label>
-                            <div id="divWait" style="display: inline">
-                                <label id="labelWait">Wait:</label>
-                                <input id="mouseOverWait" type="number" min="0" value="500" style="width: 50px;">ms
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" name="Double Click" id="optDblClick"></td>
-                        <td><label id="optDblClick">Double Click</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" name="On Focus" id="optFocus"></td>
-                        <td><label id="optFocus">On Focus</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" name="Press Ctrl Key" id="optCtrl"></td>
-                        <td><label id="optCtrl">Press Ctrl Key</label>
-                        </td>
-                    </tr>
-                </table>
-            </tr>
-            <!-- <tr>
-                <td>
-                    <label id="labelWhen">When to show password:</label>
-                </td>
-                <td>
-                    <select id="selectBehave">
-                        <option id="optMouseOver">Mouse over</option>
-                        <option id="optDblClick">Double Click</option>
-                        <option id="optFocus">On Focus</option>
-						<option id="optCtrl">Press Ctrl Key</option>
-                    </select>
-
-                </td>
-            </tr> -->
-            <tr>
-                <td>
-                    <label id="labelPreview">Preview Password field:</label>
-                </td>
-                <td>
-                    <input id="passwordTest" type="password" size="25" value="Password" style="width: 100px;">
-                </td>
-            </tr>
-        </table>
-        <!-- <br>
-        Donate BTC:
-        <a href="bitcoin:1H8qRgzgEXcxHRqbQzb37NFf3JVySDoktE" class="donate">1H8qRgzgEXcxHRqbQzb37NFf3JVySDoktE</a> -->
-
-        <script type="module" src="showPassword.js"></script>
-    </body>
+	<head>
+		<link rel="stylesheet" type="text/css" href="options.css" />
+		<title>Show Password Options</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<script type="module" src="options.js"></script>
+	</head>
+	<body>
+		<form>
+			<h1 id="optionTitle">Show Password Options</h1>
+			<table>
+				<tr>
+					<table>
+						<tr>
+							<!-- <th><input type="checkbox" style="display:none"></th> -->
+							<th colspan="2">
+								<label id="labelWhen">
+									When to show password:
+								</label>
+							</th>
+						</tr>
+						<tr>
+							<td>
+								<input
+									type="checkbox"
+									name="Mouse over"
+									id="optMouseOver" />
+							</td>
+							<td>
+								<label id="optMouseOver">Mouse over</label>
+								<div id="divWait" style="display: inline">
+									<label id="labelWait">Wait:</label>
+									<input
+										id="mouseOverWait"
+										type="number"
+										min="0"
+										value="500"
+										style="width: 50px" />
+									ms
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input
+									type="checkbox"
+									name="Double Click"
+									id="optDblClick" />
+							</td>
+							<td>
+								<label id="optDblClick">Double Click</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input
+									type="checkbox"
+									name="On Focus"
+									id="optFocus" />
+							</td>
+							<td><label id="optFocus">On Focus</label></td>
+						</tr>
+						<tr>
+							<td>
+								<input
+									type="checkbox"
+									name="Press Ctrl Key"
+									id="optCtrl" />
+							</td>
+							<td><label id="optCtrl">Press Ctrl Key</label></td>
+						</tr>
+					</table>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<label id="labelPreview">Preview:</label>
+					</td>
+					<td>
+						<input
+							id="passwordTest"
+							type="password"
+							size="25"
+							value="Password"
+							style="width: 100px" />
+					</td>
+				</tr>
+			</table>
+		</form>
+		<script type="module" src="showPassword.js"></script>
+	</body>
 </html>
