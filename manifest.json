@@ -16,11 +16,15 @@
    },
    "manifest_version": 3,
    "name": "Show Password",
-   "options_page": "options.html",
+   "options_page": "options/options.html",
    "permissions": [ "storage" ],
    "web_accessible_resources": [
       {
-         "resources": [ "lib/monkeypatch_prototypes/monkeypatch.mjs", "lib/monkeypatch_prototypes/monkeypatch_DOM.mjs", "options.js", "showPassword.js" ],
+         "resources": [
+			"lib/monkeypatch_prototypes/monkeypatch.mjs",
+			"lib/monkeypatch_prototypes/monkeypatch_DOM.mjs",
+			"options/options.js",
+			"showPassword.js" ],
          "matches": [ "<all_urls>" ]
       }
    ],

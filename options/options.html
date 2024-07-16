@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) 2014 yuSing.
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+MA 02110-1301  USA
+-->
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="options.css" />
+		<title>Show Password Options</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<script type="module" src="options.js"></script>
+	</head>
+	<body>
+		<form>
+			<h1 id="optionTitle">Show Password Options</h1>
+			<table>
+				<tr>
+					<table>
+						<tr>
+							<!-- <th><input type="checkbox" style="display:none"></th> -->
+							<th colspan="2">
+								<label id="labelWhen">
+									When to show password:
+								</label>
+							</th>
+						</tr>
+						<tr>
+							<td>
+								<input
+									type="checkbox"
+									name="Mouse over"
+									id="optMouseOver" />
+							</td>
+							<td>
+								<label id="optMouseOver">Mouse over</label>
+								<div id="divWait" style="display: inline">
+									<label id="labelWait">Wait:</label>
+									<input
+										id="mouseOverWait"
+										type="number"
+										min="0"
+										value="500"
+										style="width: 50px" />
+									ms
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input
+									type="checkbox"
+									name="Double Click"
+									id="optDblClick" />
+							</td>
+							<td>
+								<label id="optDblClick">Double Click</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input
+									type="checkbox"
+									name="On Focus"
+									id="optFocus" />
+							</td>
+							<td><label id="optFocus">On Focus</label></td>
+						</tr>
+						<tr>
+							<td>
+								<input
+									type="checkbox"
+									name="Press Ctrl Key"
+									id="optCtrl" />
+							</td>
+							<td><label id="optCtrl">Press Ctrl Key</label></td>
+						</tr>
+					</table>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<label id="labelPreview">Preview:</label>
+					</td>
+					<td>
+						<input
+							id="passwordTest"
+							type="password"
+							size="25"
+							value="Password"
+							style="width: 100px" />
+					</td>
+				</tr>
+			</table>
+		</form>
+		<script type="module" src="showPassword.js"></script>
+	</body>
+</html>
